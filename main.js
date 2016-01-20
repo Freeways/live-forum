@@ -1,9 +1,16 @@
 var express = require('express');
+var ejs = require('ejs');
 var app = express();
 
+app.set('view engine', 'ejs');
+app.engine('html', ejs.renderFile);
+
 app.use(express.static('public'));
+
 app.get('/', function (req, res) {
-    res.sendFile( __dirname + "/" + "index.html" );
+    var serverMessage = "Hello I am JS from server main.js file";
+    res.render("index.html", {message: serverMessage});
+    console.log(serverMessage);
 });
 
 var server = app.listen(8081, function () {
