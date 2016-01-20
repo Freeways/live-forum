@@ -19,6 +19,14 @@ app.get('/user', function (req, res) {
     res.render("index.html", {methode: 'get', page: 'user'});
 });
 
+app.get('/*ow', function(req, res) {
+   res.render("index.html", {methode: 'get', page: '*ow'});
+});
+
+app.get('/user/:id', function(req, res) {
+   res.render("index.html", {methode: 'get', page: 'user' + req.params.id});
+});
+
 var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
