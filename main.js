@@ -8,9 +8,15 @@ app.engine('html', ejs.renderFile);
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-    var serverMessage = "Hello I am JS from server main.js file";
-    res.render("index.html", {message: serverMessage});
-    console.log(serverMessage);
+    res.render("index.html", {methode: 'get', page: 'homepage'});
+});
+
+app.post('/', function (req, res) {
+    res.render("index.html", {methode: 'post', page: 'homepage'});
+});
+
+app.get('/user', function (req, res) {
+    res.render("index.html", {methode: 'get', page: 'user'});
 });
 
 var server = app.listen(8081, function () {
