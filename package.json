@@ -1,0 +1,11 @@
+{
+  "name": "live-forum",
+  "version": "0.0.1",
+  "description": "A forum and A chat.",
+  "keywords": ["forum", "chat", "oauth"],
+  "author": "Bechir Nemlaghi",
+  "contributors": [],
+  "dependencies": {
+    "express": "4.13.3"
+  }
+}
