@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
 app.get('/', function (req, res) {
-    var percent = Math.round(Math.random() * 100);
-    res.send('Today I am ' + percent + '% willing to chat !');
+    res.sendFile( __dirname + "/" + "index.html" );
 });
 
 var server = app.listen(8081, function () {
