@@ -4,13 +4,84 @@
         <title>Live Forum</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/live-forum.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
     </head>
+
     <body>
-        <img src="/images/freeways.jpg" alt="Freeways">
-        <ul>
-            <% topics.forEach(function (topic) {%>
-            <li><%= topic.subject %></li>
-            <% }) %>
-        </ul>
+        <header>
+            <h1>Live Forum</h1>
+            <pre>by FreeWays</pre>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/">Forum</a></li>
+                <li><a href="#">Tutorial</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+                    <section class="event-list">
+                        <article>
+                            <time datetime="2014-07-20">
+                                <span class="day">4</span>
+                                <span class="month">Jul</span>
+                                <span class="year">2014</span>
+                                <span class="time">ALL DAY</span>
+                            </time>
+                            <div class="info">
+                                <h1>Topic Title</h1>
+                                <p>
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
+                                </p>
+                            </div>
+                        </article>
+                        <article>
+                            <time datetime="2014-07-20">
+                                <span class="day">4</span>
+                                <span class="month">Jul</span>
+                                <span class="year">2014</span>
+                                <span class="time">ALL DAY</span>
+                            </time>
+                            <div class="info">
+                                <h1>Topic Title</h1>
+                                <p>
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
+                                </p>
+                            </div>
+                        </article><article>
+                            <time datetime="2014-07-20">
+                                <span class="day">4</span>
+                                <span class="month">Jul</span>
+                                <span class="year">2014</span>
+                                <span class="time">ALL DAY</span>
+                            </time>
+                            <div class="info">
+                                <h1>Topic Title</h1>
+                                <p>
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
+                                </p>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Copyright FreeWays - Tous droits réservés<br />
+                <a href="#">contactez-nous!</a></p>
+        </footer>
+
     </body>
 </html>
