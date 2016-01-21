@@ -27,8 +27,7 @@ app.get('/', function (req, res) {
     connection.query('SELECT * from topic', function (err, rows) {
         connection.end();
         if (!err){
-            console.log('Result is: ', rows);
-            res.render("index.html");
+            res.render("index.html", {topics: rows});
         }else
             console.log('Error while performing Query.');
     });
