@@ -1,5 +1,6 @@
 var express = require('express');
 var ejs = require('ejs');
+var mysql = require('mysql');
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -7,24 +8,30 @@ app.engine('html', ejs.renderFile);
 
 app.use(express.static('public'));
 
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'live-forum'
+});
+
+connection.connect(function (err) {
+    if (!err) {
+        console.log("Database is connected ... nn");
+    } else {
+        console.log("Error connecting database ... nn");
+    }
+});
+
 app.get('/', function (req, res) {
-    res.render("index.html", {methode: 'get', page: 'homepage'});
-});
-
-app.post('/', function (req, res) {
-    res.render("index.html", {methode: 'post', page: 'homepage'});
-});
-
-app.get('/user', function (req, res) {
-    res.render("index.html", {methode: 'get', page: 'user'});
-});
-
-app.get('/*ow', function(req, res) {
-   res.render("index.html", {methode: 'get', page: '*ow'});
-});
-
-app.get('/user/:id', function(req, res) {
-   res.render("index.html", {methode: 'get', page: 'user' + req.params.id});
+    connection.query('SELECT * from topic', function (err, rows) {
+        connection.end();
+        if (!err){
+            console.log('Result is: ', rows);
+            res.render("index.html");
+        }else
+            console.log('Error while performing Query.');
+    });
 });
 
 var server = app.listen(8081, function () {
