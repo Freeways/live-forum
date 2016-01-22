@@ -11,77 +11,95 @@
     </head>
 
     <body>
-        <header>
-            <h1>Live Forum</h1>
-            <pre>by FreeWays</pre>
-        </header>
-
-        <nav>
-            <ul>
-                <li><a href="/">Forum</a></li>
-                <li><a href="#">Tutorial</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://www.freeways.tn">
+                        <img alt="Freeways" src="/images/logo_freeways.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Live-Forum</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-                    <section class="event-list">
+                    <section class="topic-list">
+                        
                         <article>
-                            <time datetime="2014-07-20">
-                                <span class="day">4</span>
-                                <span class="month">Jul</span>
-                                <span class="year">2014</span>
-                                <span class="time">ALL DAY</span>
-                            </time>
+                            <div class="count">
+                                <span class="num">4</span>
+                                <span>Comments</span>
+                            </div>
                             <div class="info">
-                                <h1>Topic Title</h1>
-                                <p>
+                                <h2 class="title">Topic Title</h2>
+                                <p class="desc">
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
                                 </p>
                             </div>
                         </article>
+                        
                         <article>
-                            <time datetime="2014-07-20">
-                                <span class="day">4</span>
-                                <span class="month">Jul</span>
-                                <span class="year">2014</span>
-                                <span class="time">ALL DAY</span>
-                            </time>
-                            <div class="info">
-                                <h1>Topic Title</h1>
-                                <p>
-                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
-                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
-                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
-                                </p>
+                            <div class="count">
+                                <span class="num">4</span>
+                                <span>Comments</span>
                             </div>
-                        </article><article>
-                            <time datetime="2014-07-20">
-                                <span class="day">4</span>
-                                <span class="month">Jul</span>
-                                <span class="year">2014</span>
-                                <span class="time">ALL DAY</span>
-                            </time>
                             <div class="info">
-                                <h1>Topic Title</h1>
-                                <p>
+                                <h2 class="title">Topic Title</h2>
+                                <p class="desc">
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
                                     Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
                                 </p>
                             </div>
                         </article>
+                        
+                        <article>
+                            <div class="count">
+                                <span class="num">4</span>
+                                <span>Comments</span>
+                            </div>
+                            <div class="info">
+                                <h2 class="title">Topic Title</h2>
+                                <p class="desc">
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble.
+                                    Topic peamble topic peamble topic peamble. Topic peamble topic peamble topic peamble. 
+                                </p>
+                            </div>
+                        </article>
+                        
                     </section>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>Copyright FreeWays - Tous droits réservés<br />
-                <a href="#">contactez-nous!</a></p>
-        </footer>
 
+        <footer class="navbar navbar-default end">
+            <div class="container">
+                <p class="navbar-text pull-left">
+                    <a href="http://www.freeways.tn" target="_blank">FreeWays </a>association
+                </p>
+                <a href="http://www.freeways.tn/?q=node/6" class="navbar-btn btn-danger btn pull-right">
+                    <span class="glyphicon glyphicon-star"></span>
+                    Contactez-nous
+                </a>
+            </div>
+        </footer>
+        
     </body>
 </html>

@@ -5,10 +5,12 @@ SET time_zone = "+00:00";
 --
 USE `live-forum`;
 --
--- Truncate tables before insert
+-- Dumping data for table `topic`
 --
-TRUNCATE TABLE `comment`;
-TRUNCATE TABLE `topic`;
+INSERT INTO `topic` (`id`, `subject`, `preamble`) VALUES
+(1, 'Dogs vs Cats', 'Cat vs Dog comparison. Cats and dogs are the most popular pets in the world. Cats are more independent and are generally cheaper and less demanding pets.'),
+(2, 'Free software', 'Free software, software libre, or libre software is computer software that gives users the freedom to run the software for any purpose as well as to study, change, and distribute the software and the adapted versions. The right to study and modify free software gives full access to its source code. For computer programs which are covered by copyright law this is achieved with a software license where the author grants users the aforementioned freedoms. Software which is not covered by copyright law, such as software in the public domain is free if the source code is in the public domain (or otherwise available without restrictions).'),
+(3, 'Nodejs', 'Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js'' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.');
 --
 -- Dumping data for table `comment`
 --
@@ -30,10 +32,3 @@ INSERT INTO `comment` (`id`, `topic_id`, `body`, `user_token`) VALUES
 (15, 2, 'The interesting thing about cloud computing is that we''ve redefined cloud computing to include everything that we already do.', 'A2A6'),
 (16, 3, 'I/O-bound programs are constrained by data access. These are programs where adding more processing power or RAM often makes little difference.', '12DF'),
 (17, 3, 'A backwardism is a concept that’s so bizarre that at first it seems completely backwards.', '12E0');
---
--- Dumping data for table `topic`
---
-INSERT INTO `topic` (`id`, `subject`, `preamble`) VALUES
-(1, 'Dogs vs Cats', 'Cat vs Dog comparison. Cats and dogs are the most popular pets in the world. Cats are more independent and are generally cheaper and less demanding pets.'),
-(2, 'Free software', 'Free software, software libre, or libre software is computer software that gives users the freedom to run the software for any purpose as well as to study, change, and distribute the software and the adapted versions. The right to study and modify free software gives full access to its source code. For computer programs which are covered by copyright law this is achieved with a software license where the author grants users the aforementioned freedoms. Software which is not covered by copyright law, such as software in the public domain is free if the source code is in the public domain (or otherwise available without restrictions).'),
-(3, 'Nodejs', 'Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js'' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.');
