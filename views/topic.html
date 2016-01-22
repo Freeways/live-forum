@@ -1,0 +1,46 @@
+<%- include('layouts/header.html') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+            <section class="topic-list">
+                <article>
+                    <div class="count">
+                        <span class="num"><%= comments.length %></span>
+                        <span>Comments</span>
+                    </div>
+                    <div class="info">
+                        <h2 class="title"><a href="/topic/<%= topic.id %>"><%= topic.subject %></a></h2>
+                        <p class="desc"><%= topic.preamble %></p>
+                    </div>
+                </article>
+                <ul class="timeline">
+                    <% comments.forEach(function (comment) {%>
+                    <li>
+                        <div class="timeline-badge">
+                            <img src="/images/stallman.jpg">
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title"><%= comment.user_token %></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p><%= comment.body %></p>
+                            </div>
+                        </div>
+                    </li>
+                    <% }) %>
+                    <li>
+                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                        <div class="timeline-input">
+                            <div class="timeline-body">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="/js/timeline.js"></script>
+<%- include('layouts/footer.html') -%>

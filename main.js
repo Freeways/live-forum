@@ -13,8 +13,22 @@ app.get('/', function (req, res) {
     connection.query('SELECT topic.*, COUNT( comment.id ) as comments ' +
             'FROM  topic LEFT JOIN comment ON topic.id = comment.topic_id ' +
             'GROUP BY topic.id', function (err, rows) {
+                if (!err) {
+                    res.render("index.html", {topics: rows});
+                } else
+                    console.log('Error while performing Query.');
+            });
+});
+
+app.get('/topic/:id', function (req, res) {
+    connection.query('SELECT * FROM  topic WHERE id=' + req.params.id, function (err, topics) {
         if (!err) {
-            res.render("index.html", {topics: rows});
+            connection.query('SELECT * FROM  comment WHERE topic_id=' + req.params.id, function (err, comments) {
+                if (!err)
+                    res.render("topic.html", {topic: topics[0], comments: comments});
+                else
+                    console.log('Error while performing Query.');
+            });
         } else
             console.log('Error while performing Query.');
     });
