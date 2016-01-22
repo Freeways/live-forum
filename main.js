@@ -10,10 +10,12 @@ app.engine('html', ejs.renderFile);
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-    connection.query('SELECT * from topic', function (err, rows) {
-        if (!err)
+    connection.query('SELECT topic.*, COUNT( comment.id ) as comments ' +
+            'FROM  topic LEFT JOIN comment ON topic.id = comment.topic_id ' +
+            'GROUP BY topic.id', function (err, rows) {
+        if (!err) {
             res.render("index.html", {topics: rows});
-        else
+        } else
             console.log('Error while performing Query.');
     });
 });
