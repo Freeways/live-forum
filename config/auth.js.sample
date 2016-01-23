@@ -1,4 +1,4 @@
-exports = {
+exports.fb = {
     facebook : {
         'clientID'      : 'xxxxxxxxxxxxxxx', // My App ID
         'clientSecret'  : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx', // My App Secret

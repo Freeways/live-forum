@@ -30,6 +30,22 @@
                         <li><a href="#">Tutorial</a></li>
                         <li><a href="#">About</a></li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(user) { %>
+                        <li class="disabled"><a href="#"><%= user.facebook.name %></a></li>
+                        <li>
+                            <a href="/logout">
+                                <span class="fa fa-facebook"></span> Disconnect
+                            </a>
+                        </li>
+                        <% }else{ %>
+                        <li>
+                            <a href="/auth/facebook">
+                                <span class="fa fa-facebook"></span> Connect
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
                 </div>
             </div>
         </nav>
