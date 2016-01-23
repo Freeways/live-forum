@@ -17,11 +17,11 @@
                     <% comments.forEach(function (comment) {%>
                     <li>
                         <div class="timeline-badge">
-                            <img src="/images/stallman.jpg">
+                            <img src="<%= comment.userpic? comment.userpic : '/images/stallman.jpg' %>" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="timeline-title"><%= comment.user_token %></h4>
+                                <h4 class="timeline-title"><%= comment.username %></h4>
                             </div>
                             <div class="timeline-body">
                                 <p><%= comment.body %></p>
@@ -30,10 +30,25 @@
                     </li>
                     <% }) %>
                     <li>
-                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                        <div class="timeline-badge">
+                            <% if(user) { %>
+                                <img src="<%= user.facebook.photo %>">
+                            <% }else{ %>
+                                <i class="glyphicon glyphicon-question-sign"></i>
+                            <% } %>
+                        </div>
                         <div class="timeline-input">
                             <div class="timeline-body">
-                                <textarea></textarea>
+                                <form action="/newcomment" method="post">
+                                    <textarea name="comment" class="well"></textarea>
+                                    <% if(user) { %>
+                                        <button type="submit" class="btn btn-default">Comment</button>
+                                    <% }else{ %>
+                                        <a class="btn btn-primary" href="/auth/facebook">
+                                            <span class="fa fa-facebook"></span> Connect
+                                        </a>
+                                    <% } %>
+                                </form>
                             </div>
                         </div>
                     </li>

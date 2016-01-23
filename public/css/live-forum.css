@@ -188,7 +188,7 @@ body {
     border-bottom: 14px solid transparent;
     content: " ";
 }
-.timeline > li > .timeline-input > .timeline-body > textarea {
+.timeline > li > .timeline-input > .timeline-body > form > textarea {
     width: 100%;
     height: 100px;
 }

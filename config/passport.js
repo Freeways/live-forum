@@ -15,14 +15,16 @@ exports.fb = function (passport) {
     passport.use(new FacebookStrategy({
         clientID: config.facebook.clientID,
         clientSecret: config.facebook.clientSecret,
-        callbackURL: config.facebook.callbackURL
+        callbackURL: config.facebook.callbackURL,
+        profileFields: config.facebook.profileFields
     },
     function (token, refreshToken, profile, done) {
         process.nextTick(function () {
             var newUser = new User(
                     profile.id,
                     token,
-                    profile.displayName
+                    profile.displayName,
+                    profile.photos[0]
                     );
             return done(null, newUser);
         });
