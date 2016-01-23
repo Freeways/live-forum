@@ -1,11 +1,42 @@
 var express = require('express');
 var ejs = require('ejs');
 var connection = require('./db').connect;
+var session = require('express-session')
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('./config/auth').fb;
+
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+passport.deserializeUser(function (obj, done) {
+    done(null, obj);
+});
+
+passport.use(new FacebookStrategy({
+    clientID: config.facebook.clientID,
+    clientSecret: config.facebook.clientSecret,
+    callbackURL: config.facebook.callbackURL
+},
+function (accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+        return done(null, profile);
+    });
+}
+));
 
 var app = express();
 
 app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
+app.use(session({
+    secret: 'AlwaysFreeWays',
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static('public'));
 
@@ -34,8 +65,18 @@ app.get('/topic/:id', function (req, res) {
     });
 });
 
+app.get('/auth/facebook',
+        passport.authenticate('facebook'),
+        function (req, res) {
+        });
+app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {failureRedirect: '/'}),
+        function (req, res) {
+            res.redirect('/');
+        });
+
 var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
-    console.log("Live forum listening at http://%s:%s", host, port)
+    console.log("Live forum listening at http://%s:%s", host, port);
 });
