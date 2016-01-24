@@ -21,7 +21,8 @@ xAdmin.init(config, function (err, admin) {
         return console.log(err);
     var app = express();
     app.use('/admin', admin);
-
+    var http = require('http').Server(app);
+    var io = require('socket.io')(http);
     app.set('view engine', 'ejs');
     app.engine('html', ejs.renderFile);
     app.use(bodyParser.urlencoded({extended: false}));
@@ -99,9 +100,18 @@ xAdmin.init(config, function (err, admin) {
             res.redirect('/');
         })
     }
-    var server = app.listen(8081, function () {
-        var host = server.address().address;
-        var port = server.address().port;
-        console.log("Live forum listening at http://%s:%s", host, port);
+//    var server = app.listen(8081, function () {
+//        var host = server.address().address;
+//        var port = server.address().port;
+//        console.log("Live forum listening at http://%s:%s", host, port);
+//    });
+    io.on('connection', function (socket) {
+        socket.on('client message', function(msg){
+            io.emit('server message', msg);
+        });
+    });
+
+    http.listen(8081, function () {
+        console.log('listening on *:8081');
     });
 });

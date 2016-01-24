@@ -1,3 +1,12 @@
+        <% if (user) {%>
+        <div id="chat-holder" data-username="<%= user.facebook.name%>">
+            <ul id="messages">
+            </ul>
+            <input type="text" id="message">
+            <button id="chat-submit">Send</button>
+        </div>
+        <script src="/js/chat.js"></script>
+        <% } %>
         <footer class="navbar navbar-default end">
             <div class="container">
                 <p class="navbar-text pull-left">

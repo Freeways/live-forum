@@ -24,7 +24,7 @@ exports.fb = function (passport) {
             userModel.get.userById(profile.id, function (user) {
                 if (user) {
                     var newUser = new User(
-                            parseInt(profile.id),
+                            profile.id,
                             token,
                             user.name,
                             user.photo
@@ -32,7 +32,7 @@ exports.fb = function (passport) {
                     return done(null, newUser);
                 } else {
                     var newUser = new User(
-                            parseInt(profile.id),
+                            profile.id,
                             token,
                             profile.displayName,
                             profile.photos[0].value

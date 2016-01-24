@@ -10,7 +10,7 @@ function User(id, token, name, photo){
 exports.user = User;
 exports.get = {
     userById: function (id, cb) {
-        connection.query('SELECT * FROM  user WHERE id= ' + id, function (err, users) {
+        connection.query("SELECT * FROM  user WHERE id= '" + id + "'", function (err, users) {
             if (!err)
                 cb(users[0]);
             else
@@ -39,7 +39,7 @@ exports.set = {
     user: function (user, cb) {
         console.log(user);
         connection.query("INSERT INTO  user (id, name, photo) " +
-                "VALUES (" + user.id + ",  '" + user.name + "',  '" + user.photo + "')",
+                "VALUES ('" + user.id + "',  '" + user.name + "',  '" + user.photo + "')",
                 function (err, user) {
                     if (!err)
                         cb(user);
