@@ -59,10 +59,11 @@ xAdmin.init(config, function (err, admin) {
         );
     })
 
-    app.post('/editcomment/:id', isLoggedIn, isOwner, function (req, res) {
+    app.post('/editcomment/:id/:topicId', isLoggedIn, isOwner, function (req, res) {
         comment.set.editComment(req.params.id, req.body.comment,
                 function (success) {
-                    res.redirect('/topic/' + req.params.id);
+                    console.log(success);
+                    res.redirect('/topic/' + req.params.topicId);
                 }
         );
     })

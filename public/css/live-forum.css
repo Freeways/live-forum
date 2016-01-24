@@ -155,18 +155,7 @@ body {
     background-color: rgb(255, 255, 255);
     cursor: pointer;
 }
-.timeline > li > .timeline-input {
-    width: calc( 100% - 75px );
-    float: right;
-    border: 1px solid #d4d4d4;
-    border-radius: 2px;
-    padding: 20px;
-    position: relative;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-    background-color: rgb(255, 255, 255);
-}
-.timeline > li > .timeline-panel:before, .timeline > li > .timeline-input:before {
+.timeline > li > .timeline-panel:before {
     position: absolute;
     top: 26px;
     left: -15px;
@@ -177,7 +166,7 @@ body {
     border-bottom: 15px solid transparent;
     content: " ";
 }
-.timeline > li > .timeline-panel:after, .timeline > li > .timeline-input:after {
+.timeline > li > .timeline-panel:after {
     position: absolute;
     top: 27px;
     left: -14px;
@@ -188,7 +177,7 @@ body {
     border-bottom: 14px solid transparent;
     content: " ";
 }
-.timeline > li > .timeline-input > .timeline-body > form > textarea {
+.timeline > li > .timeline-panel > .timeline-body > form > textarea {
     width: 100%;
     height: 100px;
 }

@@ -19,14 +19,14 @@
                         <div class="timeline-badge">
                             <img src="<%= comment.photo? comment.photo : '/images/stallman.jpg' %>" alt="">
                         </div>
-                        <div class="timeline-panel">
+                        <div class="timeline-panel" id="<%= comment.id %>">
                             <div class="timeline-heading">
                                 <h4 class="timeline-title"><%= comment.name %></h4>
                                 <% if(user && comment.user_id == user.facebook.id){ %>
                                 <div class="pull-right">
                                     <span class="glyph-holder">
-                                        <a href="/editcomment/<%= comment.id %>">
-                                            <i class="glyphicon glyphicon-edit glyph-info"></i>
+                                        <a href="#<%= comment.id %>">
+                                            <i data-id="<%= comment.id %>" data-topic-id="<%= topic.id %>" class="glyphicon glyphicon-edit glyph-info"></i>
                                         </a>
                                     </span>
                                     <span class="glyph-holder">
@@ -38,7 +38,7 @@
                                 <% } %>
                             </div>
                             <div class="timeline-body">
-                                <p><%= comment.body %></p>
+                                <p class="desc"><%= comment.body %></p>
                             </div>
                         </div>
                     </li>
@@ -51,7 +51,12 @@
                             <i class="glyphicon glyphicon-question-sign"></i>
                             <% } %>
                         </div>
-                        <div class="timeline-input">
+                        <div class="timeline-panel">
+                            <% if(user) { %>
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title"><%= user.facebook.name %></h4>
+                            </div>
+                            <% } %>
                             <div class="timeline-body">
                                 <form action="/newcomment/<%= topic.id %>" method="post">
                                     <textarea name="comment" class="well"></textarea>
