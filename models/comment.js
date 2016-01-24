@@ -10,10 +10,10 @@ exports.get = {
     }
 }
 exports.set = {
-    comment: function (topicId, body, name, pic, cb) {
-        connection.query("INSERT INTO  comment (topic_id ,body ,username ,userpic)" +
-                "VALUES ('" + topicId + "',  '" + body + "',  '" + name + "',  '" + pic + "')",
-        function (err, comment) {
+    comment: function (topicId, body, userId, cb) {
+        connection.query("INSERT INTO  comment (topic_id, body, user_token)" +
+                "VALUES (" + topicId + ",  '" + body + "',  '" + userId + "')",
+                function (err, comment) {
                     if (!err)
                         cb(comment);
                     else

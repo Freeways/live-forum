@@ -12,6 +12,7 @@
     "mysql": "2.10.2",
     "passport": "0.3.2",
     "passport-facebook": "2.0.0",
-    "body-parser ": "1.14.2"
+    "body-parser ": "1.14.2",
+    "express-admin": "1.2.7"
   }
 }
