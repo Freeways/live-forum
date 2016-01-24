@@ -129,12 +129,28 @@
                 }
             },
             {
-                "name": "user_token",
-                "verbose": "user_token",
+                "name": "user_id",
+                "verbose": "user_id",
                 "control": {
                     "text": true
                 },
                 "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "user_id",
+                "verbose": "user_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(20)",
                 "allowNull": false,
                 "defaultValue": null,
                 "listview": {

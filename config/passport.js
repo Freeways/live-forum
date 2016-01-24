@@ -3,6 +3,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var config = require('./auth').fb;
 
 var User = require('../models/user').user;
+var userModel = require('../models/user');
 
 exports.fb = function (passport) {
     passport.serializeUser(function (user, done) {
@@ -20,13 +21,27 @@ exports.fb = function (passport) {
     },
     function (token, refreshToken, profile, done) {
         process.nextTick(function () {
-            var newUser = new User(
-                    profile.id,
-                    token,
-                    profile.displayName,
-                    profile.photos[0]
-                    );
-            return done(null, newUser);
+            userModel.get.userById(profile.id, function (user) {
+                if (user) {
+                    var newUser = new User(
+                            profile.id,
+                            token,
+                            user.name,
+                            user.photo
+                            );
+                    return done(null, newUser);
+                } else {
+                    var newUser = new User(
+                            profile.id,
+                            token,
+                            profile.displayName,
+                            profile.photos[0].value
+                            );
+                    userModel.set.user(newUser.facebook, function(){
+                        return done(null, newUser);
+                    });
+                }
+            });
         });
     }));
 };

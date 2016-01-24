@@ -17,11 +17,11 @@
                     <% comments.forEach(function (comment) {%>
                     <li>
                         <div class="timeline-badge">
-                            <img src="<%= comment.userpic? comment.userpic : '/images/stallman.jpg' %>" alt="">
+                            <img src="<%= comment.photo? comment.photo : '/images/stallman.jpg' %>" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="timeline-title"><%= comment.username %></h4>
+                                <h4 class="timeline-title"><%= comment.name %></h4>
                             </div>
                             <div class="timeline-body">
                                 <p><%= comment.body %></p>

@@ -10,7 +10,7 @@ var topic = require('./models/topic');
 var comment = require('./models/comment');
 
 var config = {
-    dpath: './config/',
+    dpath: './config/admin/',
     config: require('./config/admin/config.json'),
     settings: require('./config/admin/settings.json'),
     users: require('./config/admin/user.json')
@@ -44,7 +44,7 @@ xAdmin.init(config, function (err, admin) {
 
     app.get('/topic/:id', function (req, res) {
         topic.get.topicById(req.params.id, function (topic) {
-            comment.get.commentsByTopicId(req.params.id, function (comments) {
+            comment.get.commentAndUserByTopicId(req.params.id, function (comments) {
                 res.render("topic.html", {topic: topic, comments: comments, user: req.user});
             });
         });
@@ -52,6 +52,23 @@ xAdmin.init(config, function (err, admin) {
 
     app.post('/newcomment/:id', isLoggedIn, function (req, res) {
         comment.set.comment(req.params.id, req.body.comment, req.user.facebook.id,
+                function (success) {
+                    console.log(success);
+                    res.redirect('/topic/' + req.params.id);
+                }
+        );
+    })
+    
+    app.post('/editcomment/:id', isLoggedIn, function (req, res) {
+        comment.set.editComment(req.params.id, req.body.comment,
+                function (success) {
+                    res.redirect('/topic/' + req.params.id);
+                }
+        );
+    })
+    
+    app.post('/deletecomment/:id', isLoggedIn, function (req, res) {
+        comment.set.deleteComment(req.params.id,
                 function (success) {
                     res.redirect('/topic/' + req.params.id);
                 }

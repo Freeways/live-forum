@@ -4,13 +4,13 @@ function User(id, token, name, photo){
         id: id,
         token: token,
         name: name,
-        photo : photo.value
+        photo : photo
     };
 };
 exports.user = User;
 exports.get = {
     userById: function (id, cb) {
-        connection.query('SELECT * FROM  user WHERE id=' + id, function (err, users) {
+        connection.query('SELECT * FROM  user WHERE id= ' + id, function (err, users) {
             if (!err)
                 cb(users[0]);
             else
@@ -26,7 +26,7 @@ exports.get = {
         })
     },
     usersByTopicId: function (id, cb) {
-        connection.query('SELECT user.* FROM `user` left join comment on comment.user_token = user.id Left join topic on topic.id = comment.topic_id where topic.id = ' + id,
+        connection.query('SELECT user.* FROM `user` left join comment on comment.user_id = user.id Left join topic on topic.id = comment.topic_id where topic.id = ' + id,
         function (err, users) {
             if (!err)
                 cb(users);
@@ -36,9 +36,10 @@ exports.get = {
     }
 }
 exports.set = {
-    comment: function (id, name, photo, cb) {
-        connection.query("INSERT INTO  user (id, name, photo)" +
-                "VALUES (" + id + ",  '" + name + "',  '" + photo + "')",
+    user: function (user, cb) {
+        console.log(user);
+        connection.query("INSERT INTO  user (id, name, photo) " +
+                "VALUES (" + user.id + ",  '" + user.name + "',  '" + user.photo + "')",
                 function (err, user) {
                     if (!err)
                         cb(user);
