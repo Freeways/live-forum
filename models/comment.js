@@ -15,6 +15,14 @@ exports.get = {
             else
                 console.log('Error while performing Query.')
         })
+    },
+    commentById: function (id, cb) {
+        connection.query('SELECT * FROM  comment WHERE id=' + id, function (err, comments) {
+            if (!err)
+                cb(comments[0]);
+            else
+                console.log('Error while performing Query.')
+        })
     }
 }
 exports.set = {

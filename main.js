@@ -21,7 +21,7 @@ xAdmin.init(config, function (err, admin) {
         return console.log(err);
     var app = express();
     app.use('/admin', admin);
-    
+
     app.set('view engine', 'ejs');
     app.engine('html', ejs.renderFile);
     app.use(bodyParser.urlencoded({extended: false}));
@@ -58,21 +58,23 @@ xAdmin.init(config, function (err, admin) {
                 }
         );
     })
-    
-    app.post('/editcomment/:id', isLoggedIn, function (req, res) {
+
+    app.post('/editcomment/:id', isLoggedIn, isOwner, function (req, res) {
         comment.set.editComment(req.params.id, req.body.comment,
                 function (success) {
                     res.redirect('/topic/' + req.params.id);
                 }
         );
     })
-    
-    app.post('/deletecomment/:id', isLoggedIn, function (req, res) {
-        comment.set.deleteComment(req.params.id,
-                function (success) {
-                    res.redirect('/topic/' + req.params.id);
-                }
-        );
+
+    app.get('/deletecomment/:id', isLoggedIn, isOwner, function (req, res) {
+        comment.get.commentById(req.params.id, function (Comment) {
+            comment.set.deleteComment(req.params.id,
+                    function (success) {
+                        res.redirect('/topic/' + Comment.topic_id);
+                    }
+            );
+        })
     })
 
     app.get('/auth/facebook', passport.authenticate('facebook'), function (req, res) {
@@ -88,6 +90,13 @@ xAdmin.init(config, function (err, admin) {
         if (req.isAuthenticated())
             return next();
         res.redirect('/');
+    }
+    function isOwner(req, res, next) {
+        comment.get.commentById(req.params.id, function (comment) {
+            if (comment.user_id === req.user.facebook.id)
+                return next();
+            res.redirect('/');
+        })
     }
     var server = app.listen(8081, function () {
         var host = server.address().address;

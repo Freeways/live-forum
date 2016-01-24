@@ -226,6 +226,7 @@ body {
 .timeline-title {
     margin-top: 0;
     color: inherit;
+    display: inline-block;
 }
 .timeline-body > p,
 .timeline-body > ul {
@@ -236,4 +237,13 @@ body {
 }
 .timeline-body {
     display: block;
+}
+.glyph-holder{
+    padding: 6px;
+}
+.glyph-danger{
+    color: #a94442;
+}
+.glyph-info{
+    color: #31708f;
 }
