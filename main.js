@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require("body-parser");
 var ejs = require('ejs');
 var session = require('express-session')
 var passport = require('passport');
@@ -11,6 +12,8 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(session({
     secret: 'AlwaysFreeWays',
     resave: false,
@@ -34,6 +37,15 @@ app.get('/topic/:id', function (req, res) {
         });
     });
 });
+
+app.post('/newcomment/:id', isLoggedIn, function (req, res) {
+    comment.set.comment(req.params.id, req.body.comment, req.user.facebook.name, req.user.facebook.photo,
+            function (success) {
+                console.log(success);
+                res.redirect('/topic/' + req.params.id);
+            }
+    );
+})
 
 app.get('/auth/facebook', passport.authenticate('facebook'), function (req, res) {
 });

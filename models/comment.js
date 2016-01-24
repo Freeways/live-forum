@@ -9,3 +9,15 @@ exports.get = {
         })
     }
 }
+exports.set = {
+    comment: function (topicId, body, name, pic, cb) {
+        connection.query("INSERT INTO  comment (topic_id ,body ,username ,userpic)" +
+                "VALUES ('" + topicId + "',  '" + body + "',  '" + name + "',  '" + pic + "')",
+        function (err, comment) {
+                    if (!err)
+                        cb(comment);
+                    else
+                        console.log('Error while performing Query.')
+                })
+    }
+}
