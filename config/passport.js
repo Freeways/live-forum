@@ -2,8 +2,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 var config = require('./auth').fb;
 
-var User = require('../models/user').user;
-var userModel = require('../models/user');
+var User = require('../models_mongodb/user').user;
+var userModel = require('../models_mongodb/user');
 
 exports.fb = function (passport) {
     passport.serializeUser(function (user, done) {

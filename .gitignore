@@ -2,3 +2,4 @@ nbproject/
 node_modules/
 config/auth.js
 config/db.js
+config/db_mongodb.js

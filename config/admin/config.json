@@ -4,6 +4,9 @@
         "password": "root",
         "database": "live-forum"
     },
+    "mongodb": {
+        "db_string": "mongodb://localhost:27017/local"
+    },
     "app": {
         "layouts": true,
         "themes": true,

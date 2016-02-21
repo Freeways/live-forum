@@ -6,8 +6,8 @@ var session = require('express-session')
 var passport = require('passport');
 require('./config/passport').fb(passport);
 
-var topic = require('./models/topic');
-var comment = require('./models/comment');
+var topic = require('./models_mongodb/topic');
+var comment = require('./models_mongodb/comment');
 
 var config = {
     dpath: './config/admin/',
